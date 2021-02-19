@@ -177,7 +177,7 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Path.GetFileName(file_fullpath) + &quot; already present&quot;]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Path.GetFileName(file_fullpath) + &quot; already present with FileID:&quot;+strFileID]" />
                       </If.Else>
                     </If>
                     <ui:MoveFile ContinueOnError="{x:Null}" Destination="[selectFolder+&quot;/Moved&quot;]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="755,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[file_fullpath]" />
