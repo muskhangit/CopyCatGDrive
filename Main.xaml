@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.LocalPath="C:\Users\mustakhan\OneDrive - Deloitte (O365D)\mydocs\videos\Pics 27 Jan 2020\vdo" this:Main.GDriveFolderName="vdo" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.LocalPath="C:\Users\mustakhan\OneDrive - Deloitte (O365D)\mydocs\videos" this:Main.GDriveFolderName="vdo" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="LocalPath" Type="InArgument(x:String)" />
     <x:Property Name="GDriveFolderName" Type="InArgument(x:String)" />
@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>987,2084</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>987,2311</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="34">
+    <scg:List x:TypeArguments="x:String" Capacity="68">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -44,10 +44,11 @@
       <x:String>UiPath.GSuite.Contracts</x:String>
       <x:String>UiPath.GSuite.Activities.Enums</x:String>
       <x:String>System.Security</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -81,9 +82,11 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="For Each File in Folder" sap:VirtualizedContainerService.HintSize="951,2019" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="For Each File in Folder" sap:VirtualizedContainerService.HintSize="989,2246" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="selectFolder" />
       <Variable x:TypeArguments="s:String[]" Name="files" />
@@ -91,9 +94,10 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="909,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="947,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[selectFolder]</OutArgument>
       </Assign.To>
@@ -101,7 +105,7 @@
         <InArgument x:TypeArguments="x:String">[LocalPath]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="909,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="947,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[files]</OutArgument>
       </Assign.To>
@@ -109,7 +113,7 @@
         <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(selectFolder)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Directory.Exists(selectFolder+&quot;/Moved&quot;)]" sap:VirtualizedContainerService.HintSize="909,227" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Directory.Exists(selectFolder+&quot;/Moved&quot;)]" sap:VirtualizedContainerService.HintSize="947,227" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -120,80 +124,107 @@
         <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[selectFolder+&quot;/Moved&quot;]" />
       </If.Else>
     </If>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each file" sap:VirtualizedContainerService.HintSize="909,1460" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[files]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each file" sap:VirtualizedContainerService.HintSize="947,1687" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[files]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="file_fullpath" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="873,1326" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <uga:GSuiteApplicationScope ApiKey="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" KeyPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="OAuthClientID" CredentialID="837164514689-5o537um6p5k3mbr6diobdq2g4nm4muoq.apps.googleusercontent.com" CredentialSecret="IjcYOITiBzqI2KV8v3w4qFUX" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="831,1234" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyType="JSON" OAuthClient="UiPath" Password="notasecret" Services="Unselected">
-              <uga:GSuiteApplicationScope.AuthenticationScopes>
-                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.file</InArgument>
-                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive</InArgument>
-                </scg:List>
-              </uga:GSuiteApplicationScope.AuthenticationScopes>
-              <uga:GSuiteApplicationScope.Body>
-                <ActivityAction x:TypeArguments="ug:SimpleObjectContainer">
+          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="911,1553" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch.Try>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="873,1326" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uga:GSuiteApplicationScope ApiKey="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" KeyPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="OAuthClientID" CredentialID="837164514689-5o537um6p5k3mbr6diobdq2g4nm4muoq.apps.googleusercontent.com" CredentialSecret="IjcYOITiBzqI2KV8v3w4qFUX" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="831,1234" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyType="JSON" OAuthClient="UiPath" Password="notasecret" Services="Unselected">
+                  <uga:GSuiteApplicationScope.AuthenticationScopes>
+                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                      <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.file</InArgument>
+                      <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive</InArgument>
+                    </scg:List>
+                  </uga:GSuiteApplicationScope.AuthenticationScopes>
+                  <uga:GSuiteApplicationScope.Body>
+                    <ActivityAction x:TypeArguments="ug:SimpleObjectContainer">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="797,1123" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="strFileID" />
+                          <Variable x:TypeArguments="x:String" Name="strParentFolderID">
+                            <Variable.Default>
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </Variable.Default>
+                          </Variable>
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[strParentFolderID.Length=0]" sap:VirtualizedContainerService.HintSize="755,226" sap2010:WorkflowViewState.IdRef="If_3">
+                          <If.Then>
+                            <uga:FindFiles ContinueOnError="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files and Folders" FirstResultId="[strParentFolderID]" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="FindFiles_3" MaxResults="50" SearchExpression="[&quot;name = '&quot;+GDriveFolderName+&quot;'&quot;]" SupportsTeamDrives="False" />
+                          </If.Then>
+                        </If>
+                        <uga:FindFiles ContinueOnError="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files and Folders" FirstResultId="[strFileID]" sap:VirtualizedContainerService.HintSize="755,79" sap2010:WorkflowViewState.IdRef="FindFiles_2" MaxResults="50" SearchExpression="[&quot;name = '&quot;+Path.GetFileName(file_fullpath)+&quot;'&quot;]" SupportsTeamDrives="False" />
+                        <If Condition="[strFileID.Length=0]" sap:VirtualizedContainerService.HintSize="755,449" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,302" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uga:UploadFile ContinueOnError="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="UploadFile_1" LocalFilePath="[file_fullpath]" ParentId="[strParentFolderID]" SupportsTeamDrives="False" UpdateExisting="False" />
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[file_fullpath + &quot; copied to drive&quot;]" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Path.GetFileName(file_fullpath) + &quot; already present with FileID:&quot;+strFileID]" />
+                          </If.Else>
+                        </If>
+                        <ui:MoveFile ContinueOnError="{x:Null}" Destination="[selectFolder+&quot;/Moved&quot;]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="755,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[file_fullpath]" />
+                      </Sequence>
+                    </ActivityAction>
+                  </uga:GSuiteApplicationScope.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uga:GSuiteApplicationScope>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="877,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
                   <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="797,1123" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="strFileID" />
-                      <Variable x:TypeArguments="x:String" Name="strParentFolderID">
-                        <Variable.Default>
-                          <Literal x:TypeArguments="x:String" Value="" />
-                        </Variable.Default>
-                      </Variable>
-                    </Sequence.Variables>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[strParentFolderID.Length=0]" sap:VirtualizedContainerService.HintSize="755,226" sap2010:WorkflowViewState.IdRef="If_3">
-                      <If.Then>
-                        <uga:FindFiles ContinueOnError="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files and Folders" FirstResultId="[strParentFolderID]" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="FindFiles_3" MaxResults="50" SearchExpression="[&quot;name = '&quot;+GDriveFolderName+&quot;'&quot;]" SupportsTeamDrives="False" />
-                      </If.Then>
-                    </If>
-                    <uga:FindFiles ContinueOnError="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files and Folders" FirstResultId="[strFileID]" sap:VirtualizedContainerService.HintSize="755,79" sap2010:WorkflowViewState.IdRef="FindFiles_2" MaxResults="50" SearchExpression="[&quot;name = '&quot;+Path.GetFileName(file_fullpath)+&quot;'&quot;]" SupportsTeamDrives="False" />
-                    <If Condition="[strFileID.Length=0]" sap:VirtualizedContainerService.HintSize="755,449" sap2010:WorkflowViewState.IdRef="If_2">
-                      <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="376,302" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uga:UploadFile ContinueOnError="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="UploadFile_1" LocalFilePath="[file_fullpath]" ParentId="[strParentFolderID]" SupportsTeamDrives="False" UpdateExisting="False" />
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[file_fullpath + &quot; copied to drive&quot;]" />
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Path.GetFileName(file_fullpath) + &quot; already present with FileID:&quot;+strFileID]" />
-                      </If.Else>
-                    </If>
-                    <ui:MoveFile ContinueOnError="{x:Null}" Destination="[selectFolder+&quot;/Moved&quot;]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="755,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[file_fullpath]" />
-                  </Sequence>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Error while uploading file:&quot; + file_fullpath + &quot;, message:&quot;+exception.Message]" />
                 </ActivityAction>
-              </uga:GSuiteApplicationScope.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uga:GSuiteApplicationScope>
-          </Sequence>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
         </ActivityAction>
       </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
   </Sequence>
 </Activity>
